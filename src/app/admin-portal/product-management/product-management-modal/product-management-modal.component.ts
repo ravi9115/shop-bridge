@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Component, ChangeDetectionStrategy, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,9 +13,16 @@ import { RequestFactory, ProductDTO, getErrorsMap } from '@app/shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductManagementModalComponent implements OnInit {
-  @Input() productInfo!: ProductDTO;
+  @Input() productInfo: ProductDTO;
 
-  form: FormGroup;
+  form: FormGroup = this.fb.group({
+    name: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    price: ['', [Validators.required, Validators.max(1000), Validators.min(1)]],
+    quantity: ['', [Validators.required, Validators.max(150)]],
+    discount: ['', [Validators.required, Validators.max(150)]],
+  });
+
   busy: Subscription = new Subscription();
   errors: ValidationErrors;
 
@@ -56,16 +61,9 @@ export class ProductManagementModalComponent implements OnInit {
   ngOnInit(): void {
     if (this.productInfo) {
       const { name, description, price, quantity, discount } = this.productInfo;
+      console.log(this.productInfo);
       this.form.patchValue({ name, description, price, quantity, discount });
     }
-
-    this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.max(1000), Validators.min(1)]],
-      quantity: ['', [Validators.required, Validators.max(150)]],
-      discount: ['', [Validators.required, Validators.max(150)]],
-    });
   }
 
   save(): void {

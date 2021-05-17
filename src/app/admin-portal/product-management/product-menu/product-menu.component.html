@@ -1,18 +1,15 @@
 <div ngbDropdown container="body">
-  <div
-    inlineSVG="/assets/icons/options.svg"
+  <button
     ngbDropdownToggle
     [attr.id]="'dropdown-menu-' + row.id"
-    class="toggle"
-  ></div>
+    class="btn toggle"
+  >...</button>
   <div ngbDropdownMenu>
     <button ngbDropdownItem class="wrapper" (click)="editProduct($event)">
       <span class="title">Edit</span>
-      <div class="input-icon" inlineSVG="/assets/icons/edit.svg"></div>
     </button>
     <button ngbDropdownItem class="wrapper delete" (click)="deleteProduct($event)">
       <span class="title">Delete</span>
-      <div class="input-icon" inlineSVG="/assets/icons/delete.svg"></div>
     </button>
   </div>
 </div>

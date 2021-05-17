@@ -44,13 +44,11 @@
     .title {
       padding-left: 22px;
     }
-
-    .input-icon {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 22px;
-    }
   }
+}
+
+.dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
 }

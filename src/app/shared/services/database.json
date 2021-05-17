@@ -1215,14 +1215,6 @@
       "quantity": 111,
       "discount": 11,
       "id": 152
-    },
-    {
-      "name": "11111",
-      "description": "555555555",
-      "price": 55,
-      "quantity": 55,
-      "discount": 55,
-      "id": 153
     }
   ]
 }

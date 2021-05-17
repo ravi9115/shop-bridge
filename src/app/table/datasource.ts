@@ -80,16 +80,12 @@ export class AppDataSource<T> implements DataSource<T> {
   }
 
   load(endPoint: string, overwrite?: boolean): void {
-    this.lastReq = this.makeRequest(endPoint + '&_order=desc&_sort=id').subscribe(
+    this.lastReq = this.makeRequest(endPoint).subscribe(
       (v: any) => {
-        console.log(v);
         const headers = v.headers;
         const linkHeader = headers.get('Link');
         const countHeader = headers.get('X-Total-Count');
         const links = this.parseLinkHeader(linkHeader);
-        if (linkHeader) {
-          console.log(links, +countHeader);
-        }
         const body = v.body;
         this.countSubject$.next(+countHeader);
         this.currentSubject$.next(endPoint);

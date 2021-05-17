@@ -24,7 +24,7 @@ export class RequestFactory {
 
   updateProduct(productId: number, params: Partial<ProductDTO>): Observable<ProductDTO> {
     return this.service
-      .put(`${ApiConfig.productManagement}/products/${productId}/`, params)
+      .put(`${ApiConfig.productManagement}/${productId}`, params)
       .pipe(catchAndThrow);
   }
 }

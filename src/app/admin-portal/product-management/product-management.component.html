@@ -83,34 +83,6 @@
             </cdk-cell>
           </ng-container>
 
-          <ng-container cdkColumnDef="details">
-            <cdk-header-cell *cdkHeaderCellDef> Details </cdk-header-cell>
-            <cdk-cell *cdkCellDef="let row" class="app-column-details">
-              <div class="details-wrapper">
-                <div class="product-discount">
-                  {{ row.description }}
-                </div>
-                <div
-                  class="arrow"
-                  [class.show-menu]="row.isExpanded"
-                  (click)="row.isExpanded = !row.isExpanded"
-                ></div>
-              </div>
-              <div [ngbCollapse]="!row.isExpanded" class="collapse navbar-collapse">
-                <div class="detail-table">
-                  <div class="detail-column detail-column-header">
-                    <span>Quantity</span>
-                    <span>Discount</span>
-                  </div>
-                  <div class="detail-column detail-column-value">
-                    <span class="app-column-phone">{{ row.quantity }}</span>
-                    <span class="app-column-price">{{ row.discount }}</span>
-                  </div>
-                </div>
-              </div>
-            </cdk-cell>
-          </ng-container>
-
           <ng-container>
             <cdk-header-row *cdkHeaderRowDef="desktopColumns"></cdk-header-row>
             <cdk-row *cdkRowDef="let row; columns: desktopColumns"></cdk-row>

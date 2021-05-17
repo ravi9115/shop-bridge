@@ -17,7 +17,6 @@ export class InputErrorPipe implements PipeTransform {
     }
 
     const errorKey = keys.find(key => !!errorsMapping[key]);
-    console.log(keys, errorKey, errorsMapping, value);
     const error = errorsMapping[errorKey] ?? value[errorKey] ?? value[keys[0]];
     return error;
   }

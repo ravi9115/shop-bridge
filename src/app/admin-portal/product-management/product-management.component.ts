@@ -39,7 +39,7 @@ export class ProductManagementComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.tableDS = new AppDataSource(
       this.productService,
-      this.productManagementEndpoint + '?_page=1',
+      this.productManagementEndpoint + '?_page=1&_order=desc&_sort=id',
     );
   }
 
