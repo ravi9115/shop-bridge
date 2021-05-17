@@ -1,1 +1,130 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import './styles/normalize.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.css';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap');
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import './styles/shared/breakpoints';
+@import './styles/buttons';
+@import './styles/forms';
+@import './styles/ngb-modal';
+
+html {
+  font-size: 14px;
+  height: 100%;
+  text-size-adjust: 100%;
+
+  @include lt-sm {
+    font-size: 16px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-width: 320px;
+  font-family: 'Raleway', sans-serif;
+  font: 16px/1 sans-serif;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+  cursor: default;
+}
+
+.simple-text {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+::-ms-clear {
+  display: none;
+}
+
+::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+
+.form-control {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-size: 1.15em;
+  line-height: 1.5em;
+  color: #0a2b3c;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  &.invalid,
+  &.ng-touched.ng-invalid {
+    color: #0a2b3c;
+  }
+
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 9px 0;
+}
+
+input {
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.cut-off-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-danger {
+  color: #f92a2a !important;
+}
+
+app-form-field {
+  .app-input-suffix {
+    margin-left: 0.75em;
+  }
+
+  .app-input-prefix {
+    margin-right: 0.75em;
+  }
+
+  .form-control {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+  @include lt-sm {
+    .simple-text {
+      font-size: 14px;
+    }
+
+    .form-control {
+      font-size: 14px;
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+}

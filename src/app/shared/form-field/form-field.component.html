@@ -1,0 +1,21 @@
+<div
+  [class]="'form-group ' + classNames"
+  [class.has-danger]="isInvalid && isTouched"
+  [class.has-success]="!isInvalid"
+>
+  <ng-content select="app-input-label"></ng-content>
+  <ng-content select="app-input-error[top]"> </ng-content>
+  <div
+    class="input-group"
+    [class.is-touched]="isTouched"
+    [class.is-invalid]="isInvalid && isTouched"
+    [class.is-focused]="input?.focused$ | async"
+  >
+    <ng-content select="[appInputPrefix]"></ng-content>
+    <ng-content #input select="[appInput]"></ng-content>
+    <ng-content select="[appInputSuffix]"></ng-content>
+    <ng-content></ng-content>
+  </div>
+  <ng-content select="app-input-error"> </ng-content>
+  <ng-content select="app-input-hint"> </ng-content>
+</div>

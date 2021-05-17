@@ -1,0 +1,27 @@
+@mixin mq($args...) {
+  $media-type: 'only screen';
+  $media-type-key: 'media-type';
+  $webkit-screens: '-webkit-min-device-pixel-ratio:0';
+  $args: keywords($args);
+  $expr: '';
+  @each $key, $value in $args {
+    @if $value {
+      $expr: ' #{$expr} and (#{$key}: #{$value}) and (#{$webkit-screens})';
+    }
+  }
+  @media #{$media-type}#{$expr} {
+    @content;
+  }
+}
+
+@mixin lt-sm {
+  @include mq($max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin lt-md {
+  @include mq($max-width: 767px) {
+    @content;
+  }
+}

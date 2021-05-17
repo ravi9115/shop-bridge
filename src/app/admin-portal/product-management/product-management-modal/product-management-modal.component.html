@@ -1,0 +1,113 @@
+<div>
+  <div class="modal-header" [class.modal-edit-headder]="productInfo">
+    <h1 class="modal-title">
+      <span>{{ productInfo ? 'Edit Product' : 'Add Product' }}</span>
+    </h1>
+    <div *ngIf="productInfo" class="delete-wrapper">
+      <a class="delete-header" (click)="activeModal.close(true)"> Delete Product </a>
+    </div>
+  </div>
+  <form
+    (submit)="save()"
+    class="form-wrapper"
+    [formGroup]="form"
+    name="productForm"
+    id="productForm"
+    #productForm="ngForm"
+  >
+    <app-form-field>
+      <app-input-label for="name"> Name </app-input-label>
+      <input
+        appInput
+        [formControl]="name"
+        placeholder="Enter Name"
+        name="name"
+        id="name"
+        type="text"
+      />
+      <app-input-error *ngIf="name.touched && name.invalid">{{
+        name.errors | inputError: nameErrors
+      }}</app-input-error>
+    </app-form-field>
+
+    <app-form-field>
+      <app-input-label for="description"> Description </app-input-label>
+      <input
+        appInput
+        [formControl]="description"
+        placeholder="Enter Description"
+        name="description"
+        id="description"
+        type="text"
+      />
+      <app-input-error *ngIf="description.touched && description.invalid">{{
+        description.errors | inputError: descriptionErrors
+      }}</app-input-error>
+    </app-form-field>
+
+    <app-form-field>
+      <app-input-label for="price"> Price </app-input-label>
+      <input
+        appInput
+        [formControl]="price"
+        placeholder="Enter Price"
+        name="price"
+        id="price"
+        type="number"
+      />
+      <app-input-error *ngIf="price.touched && price.invalid">{{
+        price.errors | inputError: priceErrors
+      }}</app-input-error>
+    </app-form-field>
+
+    <app-form-field>
+      <app-input-label for="quantity"> Quantity </app-input-label>
+      <input
+        appInput
+        [formControl]="quantity"
+        placeholder="Enter Quantity"
+        name="quantity"
+        id="quantity"
+        type="number"
+      />
+      <app-input-error *ngIf="quantity.touched && quantity.invalid">{{
+        quantity.errors | inputError: quantityErrors
+      }}</app-input-error>
+    </app-form-field>
+
+    <app-form-field>
+      <app-input-label for="discount"> Discount </app-input-label>
+      <input
+        appInput
+        [formControl]="discount"
+        placeholder="Enter Discount"
+        name="discount"
+        id="discount"
+        type="number"
+      />
+      <app-input-error *ngIf="discount.touched && discount.invalid">{{
+        discount.errors | inputError: discountErrors
+      }}</app-input-error>
+    </app-form-field>
+  </form>
+  <div class="modal-footer" [class.is-edit]="productInfo">
+    <a *ngIf="productInfo" class="delete-option" (click)="activeModal.close(true)">
+      Delete Product
+    </a>
+    <div class="options">
+      <button type="button" class="btn btn-standard btn-white" (click)="activeModal.dismiss()">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="btn btn-standard btn-blue"
+        form="productForm"
+        [class.disabled]="form.invalid"
+      >
+        <span>{{ productInfo ? 'Save Changes' : 'Add Product' }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div [ngBusy]="busy"></div> -->

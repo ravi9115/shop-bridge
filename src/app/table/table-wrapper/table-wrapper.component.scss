@@ -1,0 +1,30 @@
+@import 'breakpoints';
+
+app-table-wrapper {
+  display: block;
+  border: 0;
+  position: relative;
+
+  .no-table-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 400px;
+  }
+}
+
+.meta-block {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.meta-pages {
+  font-size: 12px;
+  line-height: 16px;
+  color: #0a2b3c;
+  font-weight: normal;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  padding: 16px 18px 0;
+}

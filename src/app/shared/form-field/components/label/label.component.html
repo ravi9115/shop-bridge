@@ -1,0 +1,5 @@
+<label [for]="for" class="label">
+  <ng-content></ng-content>
+  <span *ngIf="required" class="text-danger">*</span>
+  <span *ngIf="optional" class="optional">(optional)</span>
+</label>

@@ -1,0 +1,93 @@
+@import 'breakpoints';
+
+:host {
+  margin: 40px;
+
+  @include lt-sm {
+    margin: 40px 20px;
+
+    .modal-title {
+      font-size: 22px;
+      line-height: 44px;
+    }
+  }
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.form-wrapper {
+  padding-bottom: 1rem;
+}
+
+.body-text {
+  text-align: center;
+  padding-bottom: 2.25rem;
+}
+
+.modal-footer {
+  justify-content: center;
+
+  > * {
+    margin: 0 !important;
+  }
+
+  .options {
+    .btn-white {
+      background-color: #ffffff !important;
+      margin: 0 1em 0 0;
+
+      @include lt-sm {
+        width: 35%;
+        min-width: 80px;
+      }
+    }
+  }
+
+  @include lt-sm {
+    .delete-option {
+      display: none;
+    }
+  }
+}
+
+.delete-wrapper {
+  font-size: 14px;
+
+  .delete-header {
+    display: none;
+
+    @include lt-sm {
+      display: initial;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 44px;
+    }
+  }
+}
+
+.is-edit {
+  justify-content: space-between;
+
+  @include lt-sm {
+    justify-content: center;
+  }
+}
+
+a {
+  color: #f92a2a;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.modal-edit-headder {
+  @include lt-sm {
+    justify-content: space-between !important;
+  }
+}

@@ -1,0 +1,84 @@
+@import 'breakpoints';
+
+.app-data-table {
+  display: block;
+}
+
+.cdk-header-row {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 18px 0 0;
+  border: 0;
+}
+
+.cdk-row {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding: 0 0;
+  border: 0;
+  margin: 8px 20px;
+  background: #ffffff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.14);
+  border-radius: 8px;
+
+  &:hover {
+    transform: scaleX(1.01);
+
+    @include lt-md {
+      transform: scaleX(1.02);
+    }
+
+    @include lt-sm {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.cdk-cell,
+.cdk-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding: 18px;
+}
+
+.cdk-cell {
+  > a {
+    color: #0a2b3c !important;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    &:hover,
+    &:focus {
+      color: #0a2b3c;
+    }
+  }
+}
+
+.cdk-header-cell {
+  color: #ffffff;
+  line-height: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #a9a4b8;
+}
+
+.cdk-column-actions {
+  max-width: 80px;
+
+  &.cdk-cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0;
+
+    .icon-edit {
+      margin-right: 0.5rem;
+    }
+  }
+}

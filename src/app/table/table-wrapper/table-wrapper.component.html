@@ -1,0 +1,27 @@
+<div class="meta-block" *ngIf="count && !hideMeta">
+  <ng-container
+    *ngTemplateOutlet="metaTemplate || metaDefault; context: { count: count, visible: visible }"
+  ></ng-container>
+  <ng-template #metaDefault let-count="count" let-visible="visible">
+    <div class="meta-pages" *ngIf="count && visible">Showing {{ visible }} out of {{ count }}</div>
+  </ng-template>
+</div>
+
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="loadMore()"
+>
+  <ng-content></ng-content>
+</div>
+
+<app-spinner-component [spinnerShow]="isLoading$ | async"></app-spinner-component>
+
+<div class="no-content" *ngIf="!count && !(isSearch$ | async)">
+  <ng-content select=".no-table-content"></ng-content>
+</div>
+
+<div class="no-content" *ngIf="!count && (isSearch$ | async)">
+  <ng-content select=".no-search-result"></ng-content>
+</div>

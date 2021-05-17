@@ -1,0 +1,124 @@
+<div *ngIf="tableDS.state$ | async" class="container-fluid container-fluid-wrapper">
+  <div class="row row-wrapper">
+    <div class="col-12 col-wrapper">
+      <div class="product-management">
+        <h3 class="product-management--title">Product Management</h3>
+      </div>
+      <div class="lower-border"></div>
+      <div class="filters">
+        <button
+          type="button"
+          class="btn btn-standard btn-yellow add-product-btn"
+          (click)="createProduct()"
+        >
+          + New Product
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 table-wrapper">
+      <app-table-wrapper>
+        <app-data-table [dataSource]="tableDS">
+          <ng-container cdkColumnDef="name">
+            <cdk-header-cell *cdkHeaderCellDef> Name </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row">
+              <a href="" [routerLink]="['/product', row.id]">{{ row.name }}</a>
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="description">
+            <cdk-header-cell *cdkHeaderCellDef> Description </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row" class="app-column-description">
+              {{ row.description }}
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="price">
+            <cdk-header-cell *cdkHeaderCellDef> price </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row" class="app-column-price">
+              {{ row.price }}
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="quantity">
+            <cdk-header-cell *cdkHeaderCellDef> quantity </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row" class="app-column-quantity">
+              {{ row.quantity }}
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="discount">
+            <cdk-header-cell *cdkHeaderCellDef> discount </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row">
+              <div class="product-discount">
+                {{ row.discount }}
+              </div>
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="actions">
+            <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row">
+              <app-product-menu
+                [row]="row"
+                (deleteProductEmitter)="deleteProduct($event)"
+                (editProductEmitter)="editProduct($event)"
+              ></app-product-menu>
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="name_price">
+            <cdk-header-cell *cdkHeaderCellDef> Name, Price </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row" class="app-column-name-role">
+              <div class="name-role-wrapper">
+                <div>
+                  <div>{{ row.name }}</div>
+                  <span>, {{ row.price }}</span>
+                </div>
+                <app-product-menu
+                  [row]="row"
+                  (deleteProductEmitter)="deleteProduct($event)"
+                  (editProductEmitter)="editProduct($event)"
+                ></app-product-menu>
+              </div>
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container cdkColumnDef="details">
+            <cdk-header-cell *cdkHeaderCellDef> Details </cdk-header-cell>
+            <cdk-cell *cdkCellDef="let row" class="app-column-details">
+              <div class="details-wrapper">
+                <div class="product-discount">
+                  {{ row.description }}
+                </div>
+                <div
+                  class="arrow"
+                  [class.show-menu]="row.isExpanded"
+                  (click)="row.isExpanded = !row.isExpanded"
+                ></div>
+              </div>
+              <div [ngbCollapse]="!row.isExpanded" class="collapse navbar-collapse">
+                <div class="detail-table">
+                  <div class="detail-column detail-column-header">
+                    <span>Quantity</span>
+                    <span>Discount</span>
+                  </div>
+                  <div class="detail-column detail-column-value">
+                    <span class="app-column-phone">{{ row.quantity }}</span>
+                    <span class="app-column-price">{{ row.discount }}</span>
+                  </div>
+                </div>
+              </div>
+            </cdk-cell>
+          </ng-container>
+
+          <ng-container>
+            <cdk-header-row *cdkHeaderRowDef="desktopColumns"></cdk-header-row>
+            <cdk-row *cdkRowDef="let row; columns: desktopColumns"></cdk-row>
+          </ng-container>
+        </app-data-table>
+
+        <div class="no-table-content">No products list available at this moment</div>
+      </app-table-wrapper>
+    </div>
+  </div>
+</div>

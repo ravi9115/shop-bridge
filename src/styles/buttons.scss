@@ -1,0 +1,51 @@
+.btn-standard {
+  background: #f9b92a;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 16px;
+  text-transform: capitalize;
+  min-width: 100px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  :is(&.active, &:hover, &.focus, &:focus) {
+    background-color: #ecf4e3;
+  }
+
+  :is(&:disabled, &.disabled) {
+    cursor: default !important;
+    opacity: 0.65;
+  }
+
+  &.btn-blue {
+    background: #0a2b3c;
+    :is(&.active, &:hover, &.focus, &:focus) {
+      background-color: #0a2b3c;
+      color: #ffffff;
+    }
+
+    &.disabled {
+      background-color: #d7d6da;
+      opacity: 1;
+    }
+  }
+
+  &.btn-yellow {
+    background-color: #f9b92a;
+
+    :is(&.active, &:hover, &.focus, &:focus) {
+      background-color: #fecf65;
+    }
+  }
+
+  &.btn-white {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #a9a4b8;
+
+    :is(&.active, &:hover, &.focus, &:focus) {
+      background-color: #f5f6f8;
+    }
+  }
+}

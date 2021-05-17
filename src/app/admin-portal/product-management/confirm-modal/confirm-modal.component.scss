@@ -1,0 +1,18 @@
+@import 'breakpoints';
+
+:host {
+  margin: 40px;
+
+  @include lt-sm {
+    margin: 40px 20px;
+  }
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.modal-body {
+  word-break: break-all;
+  word-break: break-word;
+}

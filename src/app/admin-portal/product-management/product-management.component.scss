@@ -1,0 +1,284 @@
+@import 'breakpoints';
+
+app-product-management {
+  display: block;
+  padding-bottom: 2rem;
+}
+
+.product-management {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 55px;
+  align-items: center;
+  margin: 40px 0 28px;
+
+  &--title {
+    color: #030303;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  @include lt-sm {
+    margin: 24px 0;
+    height: fit-content;
+
+    &--title {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+}
+
+.container-fluid-wrapper {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.row-wrapper {
+  margin-right: -40px;
+  margin-left: -40px;
+}
+
+.col-wrapper {
+  padding-right: 40px;
+  padding-left: 40px;
+
+  @include lt-sm {
+    padding: 0 10px;
+  }
+}
+
+.lower-border {
+  border-bottom: 1px solid #d7d6da;
+}
+
+.filters {
+  flex-direction: row-reverse;
+  display: flex;
+  padding-top: 23px;
+}
+
+.add-product-btn {
+  height: 44px;
+}
+
+.app-column-price {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #928377;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-column-quantity {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #0a2b3c;
+}
+
+.app-column-description {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #0a2b3c;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+.product-discount {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.app-column-name-role {
+  a,
+  span {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #0a2b3c;
+  }
+
+  a {
+    font-weight: 600;
+  }
+
+  span {
+    font-weight: 500;
+  }
+
+  .name-role-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    border-bottom: 1px solid #d7d6da;
+  }
+}
+
+.app-column-details {
+  .details-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+  }
+
+  .detail-table {
+    flex-direction: row;
+    display: flex;
+
+    .detail-column {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px !important;
+        line-height: 24px !important;
+      }
+
+      &-header span {
+        margin: 8px 27px 8px 0;
+        color: #a9a4b8;
+        font-weight: 600;
+      }
+
+      &-value span {
+        margin: 8px 0;
+      }
+    }
+  }
+}
+
+.arrow {
+  background-image: url('/assets/icons/down-arrow.svg');
+  width: 14px;
+  height: 8px;
+  margin-left: 5px;
+  margin-bottom: -2px;
+  margin-right: 6px;
+
+  &.show-menu {
+    transform: scaleY(-1);
+  }
+}
+
+@include lt-sm {
+  .cdk-header-row {
+    display: none;
+  }
+
+  .cdk-row {
+    margin: 10px 0;
+    flex-direction: column;
+    border-radius: 5px;
+  }
+
+  .cdk-cell {
+    padding: 3px 10px;
+    width: 100%;
+  }
+}
+
+::ng-deep {
+  .add-product-modal .modal-dialog {
+    margin: 15em auto 2em !important;
+
+    @include lt-sm {
+      margin: 1em 0 !important;
+    }
+  }
+
+  .show-product-added-message {
+    .modal-dialog {
+      max-width: 485px !important;
+    }
+
+    .modal-title {
+      font-weight: 600;
+    }
+
+    .body-text {
+      text-align: center;
+    }
+
+    .modal-body {
+      padding-bottom: 2.25rem;
+    }
+
+    @include lt-sm {
+      .modal-dialog {
+        margin: 8em auto 0 !important;
+      }
+
+      .modal-header {
+        text-align: center;
+
+        .modal-title {
+          white-space: break-spaces;
+          line-height: 32px;
+        }
+      }
+
+      .modal-body {
+        text-align: center;
+
+        .body-text {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+
+      .modal-content app-confirm-modal {
+        margin: 40px;
+      }
+
+      .modal-title {
+        font-size: 22px;
+        line-height: 44px;
+      }
+    }
+  }
+
+  .modal-product-menu {
+    @include lt-sm {
+      .modal-dialog {
+        margin: 8em auto 0 !important;
+      }
+
+      .modal-body {
+        text-align: center;
+
+        .body-text {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
